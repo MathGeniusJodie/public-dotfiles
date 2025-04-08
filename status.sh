@@ -105,4 +105,15 @@ subscript_month=$(to_subscript "$month_number")
 subscript_am_pm=$(to_subscript "$am_pm")
 current_time=$(date "+%a, %b\033[2m₍$subscript_month₎\033[0m%-d  %I:%M$subscript_am_pm")
 
-echo "${wifi_gauge} ${vol_gauge}  ${color}${gauge}\033[0m$icon  $current_time"
+status_bar="$wifi_gauge $vol_gauge  $color$gauge\033[0m$icon  $current_time"
+
+#print at bottom right of screen
+while true; do
+    height=$(tput lines)
+    width=$(tput cols)
+    tput sc
+    tput cup $((height - 1)) $((width - 34))
+    echo -n "$status_bar"
+    tput rc
+    sleep 1
+done&
