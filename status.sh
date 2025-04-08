@@ -52,7 +52,7 @@ else
     vol_gauge="🕨" # Low volume
 fi
 if [ "$is_mute" = "[off]" ]; then
-    vol_gauge="🕨\033[0;31m⊘\033[0m"  # Muted
+    vol_gauge="🕨\033[0;31m✘\033[0m"  # Muted
 fi
 
 # ⌔ ✈︎
@@ -61,7 +61,7 @@ wifi_signal=$(iwconfig 2>/dev/null | grep -oP 'Link Quality=\K\d+/\d+' | awk -F'
 
 # Determine Wi-Fi gauge symbol
 if [ -z "$wifi_signal" ]; then
-    wifi_gauge="ᯤ\033[0;31m⊘\033[0m"  # No Wi-Fi
+    wifi_gauge="ᯤ\033[0;31m✘\033[0m"  # No Wi-Fi
 elif [ "$wifi_signal" -ge 80 ]; then
     wifi_gauge="ᯤ\033[0;32m✔\033[0m"  # Excellent signal
 elif [ "$wifi_signal" -ge 60 ]; then
@@ -71,7 +71,7 @@ elif [ "$wifi_signal" -ge 40 ]; then
 elif [ "$wifi_signal" -ge 20 ]; then
     wifi_gauge="ᯤ\033[0;31m-\033[0m"  # Weak signal
 else
-    wifi_gauge="ᯤ\033[0;31m⊘\033[0m"  # Very weak or no signal
+    wifi_gauge="ᯤ\033[0;31m✘\033[0m"  # Very weak or no signal
 fi
 
 to_subscript() {
