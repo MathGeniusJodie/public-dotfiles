@@ -7,17 +7,12 @@ done &
 
 
 is_firefox_playing() {
-    wpctl status | awk '/Streams:/,0' | \
-        awk '/Firefox/ {found=1} found && /\[active\]/ {print; exit}' | \
-        grep -q '\[active\]'
-    return $? # 0 if Firefox is playing, non-zero otherwise
+    wpctl status | awk '/Streams:/,0' | awk '/Firefox/,0' | head -n 3 | grep -q '\[active\]'
+    return $?
 }
-
 is_mpv_playing() {
-    wpctl status | awk '/Streams:/,0' | \
-        awk '/mpv/ {found=1} found && /\[active\]/ {print; exit}' | \
-        grep -q '\[active\]'
-    return $? # 0 if mpv is playing, non-zero otherwise
+    wpctl status | awk '/Streams:/,0' | awk '/mpv/,0' | head -n 3 | grep -q '\[active\]'
+    return $?
 }
 
 while true; do
