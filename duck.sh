@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-# loop mpv
-while true; do
-    mpv ~/Downloads/*.webm --input-ipc-server=/tmp/socket
-done &
-
+#while true; do
+mpv ~/Downloads/*.webm --input-ipc-server=/tmp/socket &
+#done &
 
 is_firefox_playing() {
     wpctl status | awk '/Streams:/,0' | awk '/Firefox/,0' | head -n 3 | grep -q '\[active\]'
