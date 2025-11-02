@@ -14,7 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	"neovim/nvim-lspconfig",
 	"nvim-treesitter/nvim-treesitter",
-	"zbirenbaum/copilot.lua"
+	"zbirenbaum/copilot.lua",
+	"sphamba/smear-cursor.nvim"
 })
 
 require("copilot").setup({
